@@ -1,24 +1,56 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type    | Options                   |
+| ------------------ | ------- | ------------------------- |
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true |
+| encrypted_password | string  | null: false               |
+| prefecture_id      | integer | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :parks
+- has_many :comments
 
-* Configuration
+## parks テーブル
 
-* Database creation
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| name                  | string     | null: false                    |
+| prefecture_id         | integer    | null: false                    |
+| address               | string     |                                |
+| opening_hours         | string     |                                |
+| parking               | string     |                                |
+| vending_machine       | string     |                                |
+| hand_wash             | string     |                                |
+| toilet                | string     |                                |
+| breastfeeding_room    | string     |                                |
+| diaper_changing_table | string     |                                |
+| play_set              | string     |                                |
+| sandbox               | string     |                                |
+| grass                 | string     |                                |
+| kick_bike             | string     |                                |
+| store                 | string     |                                |
+| restaurant            | string     |                                |
+| user                  | references | null: false, foreign_key: true |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- has_many :comments
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## comments テーブル
 
-* Deployment instructions
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | -------------------------------|
+| user             | references | null: false, foreign_key: true |
+| park             | references | null: false, foreign_key: true |
+| text             | text       | null: false                    |
+| star             | integer    | null: false                    |
 
-* ...
+### Association
+
+- belongs_to :user
+- belongs_to :park
