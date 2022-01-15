@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_13_192643) do
+ActiveRecord::Schema.define(version: 2022_01_14_140225) do
+
+  create_table "parks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "prefecture_id", null: false
+    t.string "address"
+    t.string "opening_hours"
+    t.boolean "parking", default: false, null: false
+    t.boolean "vending_machine", default: false, null: false
+    t.boolean "hand_wash", default: false, null: false
+    t.boolean "toilet", default: false, null: false
+    t.boolean "breastfeeding_room", default: false, null: false
+    t.boolean "diaper_changing_table", default: false, null: false
+    t.boolean "play_set", default: false, null: false
+    t.boolean "sandbox", default: false, null: false
+    t.boolean "grass", default: false, null: false
+    t.boolean "kick_bike", default: false, null: false
+    t.boolean "store", default: false, null: false
+    t.boolean "restaurant", default: false, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_parks_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
@@ -26,4 +49,5 @@ ActiveRecord::Schema.define(version: 2022_01_13_192643) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "parks", "users"
 end
