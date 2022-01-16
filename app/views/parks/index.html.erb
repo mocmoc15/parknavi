@@ -14,7 +14,11 @@
 <h3><%= link_to '地図から探す', "#" %></h3>
 
 
- <% @parks.each do |park| %>
-  <%= park.name %>
-  <%= park.prefecture[:name] %><br>
- <% end %>
+<% @parks.each do |park| %>
+ <li class='list'>
+    <%= link_to park_path(park.id), method: :get do %>
+      <%= park.name %>
+      <%= park.prefecture[:name] %><br>
+    <% end %>
+  </li>
+<% end %>
