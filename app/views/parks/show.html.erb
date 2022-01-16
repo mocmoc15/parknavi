@@ -1,0 +1,52 @@
+  公園名
+  <%= @park.name %>
+
+  都道府県 
+  <%= @park.prefecture[:name] %>
+     
+   住所（市町村以下）
+   <%= @park.address %>
+   
+   開園時間
+  <%= @park.opening_hours %>
+
+   駐車場
+  <%= @park.parking ? 'あり' : 'なし' %>
+   
+   自動販売機
+  <%= @park.vending_machine ? 'あり' : 'なし' %>
+   
+   手洗い場
+  <%= @park.hand_wash ? 'あり' : 'なし' %>
+   
+   トイレ
+  <%= @park.toilet ? 'あり' : 'なし' %>
+   
+   授乳室 
+  <%= @park.breastfeeding_room ? 'あり' : 'なし' %>
+   
+   おむつ交換台
+  <%= @park.diaper_changing_table ? 'あり' : 'なし' %>
+  
+   遊具
+  <%= @park.play_set ? 'あり' : 'なし' %>
+   
+   砂場
+  <%= @park.sandbox ? 'あり' : 'なし' %>
+
+   広場
+  <%= @park.grass ? 'あり' : 'なし' %>
+
+   キックバイク
+  <%= @park.kick_bike ? '可' : '不可' %>
+
+   売店・コンビニ
+  <%= @park.store ? 'あり' : 'なし' %>
+
+   飲食店
+  <%= @park.restaurant ? 'あり' : 'なし' %>
+
+
+  <% if user_signed_in? %>
+   <%= link_to "公園情報の編集", '#', method: :get %>
+  <% end %>

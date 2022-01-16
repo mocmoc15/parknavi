@@ -17,6 +17,11 @@ class ParksController < ApplicationController
     end
   end
 
+
+  def show
+    @park = Park.find(params[:id])
+  end
+
   private
   def park_params
     params.require(:park).permit(:name, :prefecture_id, :address, :opening_hours, :parking, :vending_machine, :hand_wash, :toilet, :breastfeeding_room, :diaper_changing_table, :play_set, :sandbox, :grass, :kick_bike, :store, :restaurant).merge(user_id: current_user.id)
