@@ -15,10 +15,11 @@
 
 
 <% @parks.each do |park| %>
- <li class='list'>
+  <li class='list'>
     <%= link_to park_path(park.id), method: :get do %>
-      <%= park.name %>
-      <%= park.prefecture[:name] %><br>
-    <% end %>
+       <%# <%= image_tag park.images[0] %>
+      <%= park.name %><br>
+      <%= park.prefecture[:name] %><br> 
+    <% end %> 
   </li>
-<% end %>
+<% end %> 
