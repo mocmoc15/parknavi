@@ -24,6 +24,20 @@ class ParksController < ApplicationController
     @comments = @park.comments.includes(:user)
   end
 
+
+  def edit
+    @park = Park.find(params[:id])
+  end
+
+  def update
+    @park = Park.find(params[:id])
+    if @park.update(park_params)
+      redirect_to park_path
+    else
+      render :edit
+    end
+  end
+
   private
   def park_params
     params.require(:park).permit(:name, :prefecture_id, :address, :opening_hours, :parking, :vending_machine, :hand_wash, :toilet, :breastfeeding_room, :diaper_changing_table, :play_set, :sandbox, :grass, :kick_bike, :store, :restaurant).merge(user_id: current_user.id)
