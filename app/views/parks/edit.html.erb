@@ -1,0 +1,53 @@
+<h3>公園投稿画面</h3>
+ <%= form_with(model: @park, local: true) do |f| %>
+   
+   <%= f.label :公園名 %><br />
+   <%= f.text_field :name %><br />
+
+   <%= f.label :都道府県 %><br />  
+   <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) %><br />
+   
+   <%= f.label :住所（市町村以下） %><br />
+   <%= f.text_field :address %><br />
+
+   <%= f.label :開園時間 %><br />
+   <%= f.text_field :opening_hours %><br />
+
+   <%= f.label :駐車場 %>
+   <%= f.check_box :parking, {}, "true", "false" %><br />
+
+   <%= f.label :自動販売機 %>
+   <%= f.check_box :vending_machine, {}, "true", "false" %><br />
+   
+   <%= f.label :手洗い場 %>
+   <%= f.check_box :hand_wash, {}, "true", "false" %><br />
+
+   <%= f.label :トイレ %>
+   <%= f.check_box :toilet, {}, "true", "false" %><br />
+   
+   <%= f.label :授乳室 %>
+   <%= f.check_box :breastfeeding_room, {}, "true", "false" %><br />
+   
+   <%= f.label :おむつ交換台 %>
+   <%= f.check_box :diaper_changing_table, {}, "true", "false" %><br />
+
+   <%= f.label :遊具 %>
+   <%= f.check_box :play_set, {}, "true", "false" %><br />
+   
+   <%= f.label :砂場 %>
+   <%= f.check_box :sandbox, {}, "true", "false" %><br />
+   
+   <%= f.label :広場 %>
+   <%= f.check_box :grass, {}, "true", "false" %><br />
+   
+   <%= f.label :キックバイク %>
+   <%= f.check_box :kick_bike, {}, "true", "false" %><br />
+   
+   <%= f.label :売店・コンビニ %>
+   <%= f.check_box :store, {}, "true", "false" %><br />
+
+   <%= f.label :飲食店 %>
+   <%= f.check_box :restaurant, {}, "true", "false" %><br />
+   
+   <%= f.submit "SEND" %>
+ <% end %>

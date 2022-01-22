@@ -48,7 +48,7 @@
 
 
   <% if user_signed_in? %>
-   <%= link_to "公園情報の編集", '#', method: :get %>
+   <%= link_to "公園情報の編集", edit_park_path(@park.id), method: :get %>
   <% end %>
 
 
