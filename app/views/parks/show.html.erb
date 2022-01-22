@@ -51,4 +51,39 @@
    <%= link_to "公園情報の編集", '#', method: :get %>
   <% end %>
 
-  
+
+
+
+ <%# <% @comments.each do |comment| %> 
+    <%# <%= image_tag comment.images, class: "item-img" if comment.images.attached? %> 
+ <%# <% end %>
+
+
+<% if user_signed_in? %>
+ <%= form_with(model: [@park, @comment], local: true) do |f| %>
+  <p>
+    クリックして写真をアップロード
+  </p>
+   <%= f.file_field :image %><br>
+   <%= f.text_area :text, placeholder: "コメントする", rows: "2" %>
+   <%= f.submit "SEND" %>
+ <% end %>
+<% else %>
+  <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+<% end %>
+
+<%# <% if @comment.image.attached? %> 
+
+<%# <% end %>
+ <%# multiple: true %> 
+
+<div class="comments">
+  <h4>＜コメント一覧＞</h4>
+  <% @comments.each do |comment| %>
+    <p>
+      <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+      <%= comment.text %><br>
+      <%= image_tag comment.image.variant(resize: '500x500') if comment.image.attached? %>
+    </p>
+  <% end %>
+</div>

@@ -48,7 +48,7 @@
 | user             | references | null: false, foreign_key: true |
 | park             | references | null: false, foreign_key: true |
 | text             | text       | null: false                    |
-| star             | integer    | null: false                    |
+| star             | float      | null: false                    |
 
 ### Association
 

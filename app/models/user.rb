@@ -7,7 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname,  presence: true
-
   validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
+
+  has_many :parks
+  has_many :comments
 
 end
