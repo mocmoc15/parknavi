@@ -1,0 +1,17 @@
+<h3>検索ページ</h3>
+<h3><%= link_to 'トップページへ戻る', root_path%></h3>
+<div class='item-contents' id="detailed-search-result-wrapper">
+  <%= search_form_for @q, url: search_parks_path, html: {id: "detailed-search-form"} do |f| %>
+   <div class="search-field">
+      <%= f.label :name_cont, '公園名' %>
+      <br>
+      <%= f.text_field :name_cont, placeholder: '公園名' %>
+    </div>
+    <%= f.submit '検索' %>
+  <% end %>
+   <% @parks.each do |park| %> 
+     <%# <%= image_tag park.image %><br>  
+     <%= park.name%><br> 
+     <%= link_to '詳細', park_path(park.id) %>
+   <% end %> 
+</div>

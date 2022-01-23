@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   root to: 'parks#index'
   resources :parks, only: [:index, :new, :create, :show, :edit, :update] do
     resources :comments, only:  :create
+    collection do
+      get 'search'
+    end
   end
 end
