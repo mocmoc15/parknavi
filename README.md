@@ -13,6 +13,8 @@
 
 - has_many :parks
 - has_many :comments
+- has_many :favorites
+
 
 ## parks テーブル
 
@@ -39,6 +41,7 @@
 ### Association
 
 - has_many :comments
+- has_many :favorites
 - belongs_to :user
 
 ## comments テーブル
@@ -49,6 +52,18 @@
 | park             | references | null: false, foreign_key: true |
 | text             | text       | null: false                    |
 | star             | float      | null: false                    |
+
+### Association
+
+- belongs_to :user
+- belongs_to :park
+
+## favorites テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | -------------------------------|
+| user             | references | null: false, foreign_key: true |
+| park             | references | null: false, foreign_key: true |
 
 ### Association
 

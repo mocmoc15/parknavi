@@ -11,5 +11,6 @@ class User < ApplicationRecord
 
   has_many :parks
   has_many :comments
+  has_many :favorites
 
 end
