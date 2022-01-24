@@ -81,7 +81,7 @@
   <h4>＜コメント一覧＞</h4>
   <% @comments.each do |comment| %>
     <p>
-      <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+      <strong><%= comment.user.nickname  %>：</strong>
       <%= comment.text %><br>
       <%= image_tag comment.image.variant(resize: '500x500') if comment.image.attached? %>
     </p>
