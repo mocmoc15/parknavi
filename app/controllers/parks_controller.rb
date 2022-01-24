@@ -44,7 +44,6 @@ class ParksController < ApplicationController
     @parks = @q.result
   end
 
-
   private
   def park_params
     params.require(:park).permit(:name, :prefecture_id, :address, :opening_hours, :parking, :vending_machine, :hand_wash, :toilet, :breastfeeding_room, :diaper_changing_table, :play_set, :sandbox, :grass, :kick_bike, :store, :restaurant).merge(user_id: current_user.id)

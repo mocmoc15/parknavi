@@ -2,13 +2,85 @@
 <h3><%= link_to 'トップページへ戻る', root_path%></h3>
 <div class='item-contents' id="detailed-search-result-wrapper">
   <%= search_form_for @q, url: search_parks_path, html: {id: "detailed-search-form"} do |f| %>
-   <div class="search-field">
+    <div class="search-field">
       <%= f.label :name_cont, '公園名' %>
       <br>
-      <%= f.text_field :name_cont, placeholder: '公園名' %>
+      <%= f.text_field :name_cont, placeholder: '公園名',:include_blank => true %>
     </div>
-    <%= f.submit '検索' %>
+    <div class="search-field">
+      <%= f.label :prefecture_id_in, '都道府県' %>
+       <br>
+      <%= f.collection_select(:prefecture_id_eq, Prefecture.all, :id, :name, :include_blank => true) %>
+    </div>
+ 
+    <div class="search-field" >
+      <%= f.label :parking_in, '駐車場' %> 
+       <br> 
+      <%= f.check_box :parking_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :vending_machine_in, '自動販売機' %> 
+       <br> 
+      <%= f.check_box :vending_machine_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :hand_wash_in, '手洗い場' %> 
+       <br> 
+      <%= f.check_box :hand_wash_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :toilet_in, 'トイレ' %> 
+       <br> 
+      <%= f.check_box :toilet_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :breastfeeding_room_in, '授乳室' %> 
+       <br> 
+      <%= f.check_box :breastfeeding_room_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :diaper_changing_table_in, 'おむつ交換台' %> 
+       <br> 
+      <%= f.check_box :diaper_changing_table_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :play_set_in, '遊具' %> 
+       <br> 
+      <%= f.check_box :play_set_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :sandbox_in, '砂場' %> 
+       <br> 
+      <%= f.check_box :sandbox_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+  
+    <div class="search-field" >
+      <%= f.label :grass_in, '広場' %> 
+       <br> 
+      <%= f.check_box :grass_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :kick_bike_in, 'キックバイク' %> 
+       <br> 
+      <%= f.check_box :kick_bike_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+    <div class="search-field" >
+      <%= f.label :store_in, '売店・コンビニ' %> 
+       <br> 
+      <%= f.check_box :store_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div>
+    <div class="search-field" >
+      <%= f.label :restaurant_in, '飲食店' %> 
+       <br> 
+      <%= f.check_box :restaurant_eq, {},checked_value = "1", unchecked_value = "" %> 
+    </div> 
+   <%= f.submit '検索' %>
   <% end %>
+
+
+
+
+
    <% @parks.each do |park| %> 
      <%# <%= image_tag park.image %><br>  
      <%= park.name%><br> 
