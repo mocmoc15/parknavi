@@ -1,7 +1,18 @@
+  <%if current_user.already_favorited?(@park)%>
+    <%= link_to park_favorite_path(@park), method: :delete do %>
+    <i class="fas fa-star"></i>
+    <% end %>
+  <% else %>
+    <%= link_to park_favorites_path(@park), method: :post do %>
+    <i class="far fa-star"></i>
+    <% end %>
+  <% end %>
+  <%= @park.favorites.count %>
+
   公園名
   <%= @park.name %>
 
-  都道府県 
+  都道府県
   <%= @park.prefecture[:name] %>
      
    住所（市町村以下）
