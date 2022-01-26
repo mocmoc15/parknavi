@@ -1,0 +1,10 @@
+マイページ
+
+
+<div class="XXXX">
+  <p><%= @user.nickname %>さんのお気に入りの公園一覧</p>
+
+  <% @parks.each do |park| %>
+      <span class="ZZZZ"><%= park.name %></span>
+  <% end %>
+</div>

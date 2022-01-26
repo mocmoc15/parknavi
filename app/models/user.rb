@@ -9,7 +9,15 @@ class User < ApplicationRecord
   validates :nickname,  presence: true
   validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
 
+
   has_many :parks
   has_many :comments
+  has_many :favorites, dependent: :destroy
+
+ def already_favorited?(park)
+   self.favorites.exists?(park_id: park.id)
+ end
+
+
 
 end
