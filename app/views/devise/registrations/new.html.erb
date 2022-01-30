@@ -1,3 +1,6 @@
+<%= render "shared/header" %>  
+
+
 <div class="contents row">
   <div class="container">
     <h2>会員登録</h2>
@@ -32,10 +35,10 @@
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
 
-    <button type="button" class="btn btn-secondary">登録</button>
-      <%# <div class="actions"> %>
-        <%# <%= f.submit "登録" %> 
-      <%# </div> %>
+    <%# <button type="button" class="btn btn-secondary">登録</button> %>
+      <div class="actions"> 
+        <%= f.submit "登録" %>
+      </div>
     <% end %>
 
   </div>

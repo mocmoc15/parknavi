@@ -1,14 +1,16 @@
 <%= render "shared/header" %>
 
-<h2>ユーザー編集画面</h2>
-
-
- <%= form_with model: current_user, local: true do |f|%>
+<div class="contents row">
+<div class="container">
+ <h2>住んでいるところ編集</h2>
+ <%= form_with model: current_user, class: 'edit_user', local: true do |f|%>
    <div class='field'>
      <%= f.label :住んでいるところ %> <br />
      <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box"}) %>
    </div>
    <div class='actions'>
-     <%= f.submit "Update", class: 'btn'%>
+     <%= f.submit "更新" %>
    </div>
  <% end %>
+</div>
+</div>
