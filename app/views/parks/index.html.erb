@@ -1,24 +1,25 @@
-<h1>トップページ</h1>
+<%= render "shared/header" %>
+<div class='search-items'>
+  <div class='search-keyword'>
+   <%= link_to 'キーワードから探す', search_parks_path %>
+  </div>
+  <div class='search-map'>
+   <%= link_to '地図から探す', "#"  %>
+  </div>
+</div>
 
-  <% if user_signed_in? %>
-   <li><%= link_to current_user.nickname, "/users/#{current_user.id}"  %></li>
-   <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-  <% else %>
-   <li><%= link_to 'ログイン', new_user_session_path %></li>
-   <li><%= link_to '新規登録', new_user_registration_path %></li>
-  <% end %>
- 
-
-<h3><%= link_to 'キーワードから探す', search_parks_path %></h3>
-<h3><%= link_to '地図から探す', "#" %></h3>
-
-
-<% @parks.each do |park| %>
-  <li class='list'>
-    <%= link_to park_path(park.id), method: :get do %>
-       <%# <%= image_tag park.images[0] %>
-      <%= park.name %><br>
-      <%= park.prefecture[:name] %><br> 
-    <% end %> 
-  </li>
-<% end %> 
+<ul class='park-lists'>
+ <% @parks.each do |park| %>
+   <li class='list'>
+     <%= link_to park_path(park.id), method: :get do %>
+        <%# <%= image_tag park.images[0] %>
+       <div class='list-name'>
+        <%= park.name %><br>
+       </div>
+       <div class='list-prefecture'>
+        <%= park.prefecture[:name] %><br> 
+       </div>
+     <% end %> 
+   </li>
+ <% end %> 
+</ul>

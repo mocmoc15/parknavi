@@ -1,3 +1,5 @@
+<%= render "shared/header" %>  
+  
   <%if current_user.already_favorited?(@park)%>
     <%= link_to park_favorite_path(@park), method: :delete do %>
     <i class="fas fa-star"></i>
