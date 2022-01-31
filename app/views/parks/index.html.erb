@@ -1,14 +1,25 @@
 <%= render "shared/header" %>
+<div class='search-items'>
+  <div class='search-keyword'>
+   <%= link_to 'キーワードから探す', search_parks_path %>
+  </div>
+  <div class='search-map'>
+   <%= link_to '地図から探す', "#"  %>
+  </div>
+</div>
 
-<h3><%= link_to 'キーワードから探す', search_parks_path %></h3>
-<h3><%= link_to '地図から探す', "#" %></h3>
-
-<% @parks.each do |park| %>
-  <li class='list'>
-    <%= link_to park_path(park.id), method: :get do %>
-       <%# <%= image_tag park.images[0] %>
-      <%= park.name %><br>
-      <%= park.prefecture[:name] %><br> 
-    <% end %> 
-  </li>
-<% end %> 
+<ul class='park-lists'>
+ <% @parks.each do |park| %>
+   <li class='list'>
+     <%= link_to park_path(park.id), method: :get do %>
+        <%# <%= image_tag park.images[0] %>
+       <div class='list-name'>
+        <%= park.name %><br>
+       </div>
+       <div class='list-prefecture'>
+        <%= park.prefecture[:name] %><br> 
+       </div>
+     <% end %> 
+   </li>
+ <% end %> 
+</ul>

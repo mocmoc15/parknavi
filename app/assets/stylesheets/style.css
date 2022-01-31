@@ -140,3 +140,39 @@ input[type="password"] {
 
 
 /* トップページ */
+.search-items {
+  background-color:#57C3E9;
+  display: flex;
+  justify-content:center;
+  text-align: center;
+
+}
+
+.search-keyword {
+  background-color: #666;
+  border: 2px solid black;
+}
+
+.search-map {
+  background-color: rgb(29, 168, 64);
+  border: 2px solid black;
+
+}
+
+
+.list {
+  list-style: none;
+}
+
+
+.list-name {
+
+  background-color: rgb(168, 29, 29);
+}
+
+
+.list-prefecture {
+  background-color: rgb(168, 29, 29);
+}
+
+
