@@ -1,17 +1,21 @@
 <%= render "shared/header" %>
 <div class='search-items'>
   <div class='search-keyword'>
-   <%= link_to 'キーワードから探す', search_parks_path %>
+  <i class="fa fa-search"></i>
+   <%= link_to 'キーワードから探す', search_parks_path, class:'keyword' %>
   </div>
   <div class='search-map'>
-   <%= link_to '地図から探す', "#"  %>
+   <i class="fa fa-map-marker"></i>
+   <%= link_to '地図から探す', "#" , class:'map' %>
   </div>
 </div>
 
+<div class='main'>
+<p class='new-lists'>新着一覧</p>
 <ul class='park-lists'>
  <% @parks.each do |park| %>
    <li class='list'>
-     <%= link_to park_path(park.id), method: :get do %>
+     <%= link_to park_path(park.id), class:'list-all',method: :get do %>
         <%# <%= image_tag park.images[0] %>
        <div class='list-name'>
         <%= park.name %><br>
@@ -23,3 +27,4 @@
    </li>
  <% end %> 
 </ul>
+</div>

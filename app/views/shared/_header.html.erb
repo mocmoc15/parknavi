@@ -5,14 +5,63 @@
      <%= link_to 'Parknavi', "/",class: "title" %>
    </ul>
 
-   <ul class='lists-right'>
+
+   <div class='lists-center'>
      <% if user_signed_in? %>
-      <li><%= link_to current_user.nickname, "/users/#{current_user.id}", class: "mypage" %></li>
-      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-     <% else %>
-      <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <div class='list-item'> 
+          <%= link_to user_path(current_user), class: "mypage" do %> 
+          <i class="fas fa-user fa-3x color"></i>
+          <% end %>
+          <li><%= link_to 'マイページ', user_path(current_user) , class: "mypage" %></li>
+        </div>
+        <div class='list-item'>
+          <%= link_to new_park_path, class: "park-new" do %>
+          <i class="fas fa-pencil-alt fa-3x color"></i>
+          <% end %>
+          <li><%= link_to '新規投稿',new_park_path, class: "park-new"%></li>
+        </div>
      <% end %>
+
+   
+
+     <div class='list-item'>
+        <%= link_to search_parks_path, class:"header-search" do %>
+        <i class="fa fa-search fa-3x color"></i>
+        <% end %>
+        <li><%= link_to 'キーワード検索', search_parks_path, class:"header-search" %></li>
+     </div>
+
+     <div class='list-item'>
+        <%= link_to "#", class:"header-map" do %>
+        <i class="fa fa-map-marker fa-3x color"></i>
+        <% end %>
+        <li><%= link_to '地図検索', "#", class:"header-map" %></li>
+     </div>
+   </div>
+
+
+   <ul class='lists-right'>
+      <% if user_signed_in? %>
+       <div class='list-item'>
+          <%= link_to destroy_user_session_path, method: :delete, class: "logout" do %>
+          <i class="fas fa-sign-out-alt fa-3x color"></i>
+          <% end %>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+       </div>
+      <% else %>
+       <div class='list-item'>
+          <%= link_to new_user_session_path, class: "login" do %>
+          <i class="fas fa-sign-in-alt fa-3x color"></i>
+          <% end %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+       </div>
+       <div class='list-item'>
+          <%= link_to new_user_registration_path, class: "sign-up" do %>
+          <i class="fas fa-user-plus fa-3x color"></i>
+          <% end %>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+       </div>
+      <% end %>
    </ul>
  </div>
 </header>
