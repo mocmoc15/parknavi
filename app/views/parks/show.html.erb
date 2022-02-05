@@ -1,5 +1,5 @@
 <%= render "shared/header" %>  
-  
+<% if user_signed_in? %>
   <%if current_user.already_favorited?(@park)%>
     <%= link_to park_favorite_path(@park), method: :delete do %>
     <i class="fas fa-star"></i>
@@ -10,55 +10,76 @@
     <% end %>
   <% end %>
   <%= @park.favorites.count %>
+<% end %>
 
-  公園名
-  <%= @park.name %>
 
-  都道府県
-  <%= @park.prefecture[:name] %>
-     
-   住所（市町村以下）
-   <%= @park.address %>
+<ul class='park-details'>
+  <li class='park-name'>公園名</li>
+  <div class='park-name-value'><%= @park.name %></div>
+
+  <li class='park-prefecture'>都道府県</li>
+  <div class='park-prefecture-value'><%= @park.prefecture[:name] %></div>
+
+
+  <li class='park-address'>住所（市町村以下）</li>
+  <div class='park-address-value'><%= @park.address %></div>
    
-   開園時間
-  <%= @park.opening_hours %>
+  <li class='park-opening-hours'>開園時間</li>
+  <div class='park-opening-hours-value'><%= @park.opening_hours %></div>
+</ul>
 
-   駐車場
-  <%= @park.parking ? 'あり' : 'なし' %>
-   
-   自動販売機
-  <%= @park.vending_machine ? 'あり' : 'なし' %>
-   
-   手洗い場
-  <%= @park.hand_wash ? 'あり' : 'なし' %>
-   
-   トイレ
-  <%= @park.toilet ? 'あり' : 'なし' %>
-   
-   授乳室 
-  <%= @park.breastfeeding_room ? 'あり' : 'なし' %>
-   
-   おむつ交換台
-  <%= @park.diaper_changing_table ? 'あり' : 'なし' %>
-  
-   遊具
-  <%= @park.play_set ? 'あり' : 'なし' %>
-   
-   砂場
-  <%= @park.sandbox ? 'あり' : 'なし' %>
+<table class='detail-table'>
+ <tbody>
+ <tr>
+  <th class='detail-item'>駐車場</th>
+  <td class='detail-value'><%= @park.parking ? 'あり' : 'なし' %></td>
+ </tr>
 
-   広場
-  <%= @park.grass ? 'あり' : 'なし' %>
-
-   キックバイク
-  <%= @park.kick_bike ? '可' : '不可' %>
-
-   売店・コンビニ
-  <%= @park.store ? 'あり' : 'なし' %>
-
-   飲食店
-  <%= @park.restaurant ? 'あり' : 'なし' %>
-
+ <tr>
+  <th class='detail-item'>自動販売機</th>
+  <td class='detail-value'><%= @park.vending_machine ? 'あり' : 'なし' %></td>
+ </tr>
+  <tr>
+  <th class='detail-item'>手洗い場</th>
+  <td class='detail-value'><%= @park.hand_wash ? 'あり' : 'なし' %></td>
+ </tr>
+  <tr>
+  <th class='detail-item'>トイレ</th>
+  <td class='detail-value'><%= @park.toilet ? 'あり' : 'なし' %></td>
+ </tr>
+  <tr>
+  <th class='detail-item'>授乳室</th>
+  <td class='detail-value'><%= @park.breastfeeding_room ? 'あり' : 'なし' %></td>
+ </tr>
+  <tr>
+  <th class='detail-item'>おむつ交換台</th>
+  <td class='detail-value'><%= @park.diaper_changing_table ? 'あり' : 'なし' %></td>
+ </tr>
+ <tr>
+  <th class='detail-item'>遊具</th>
+  <td class='detail-value'><%= @park.play_set ? 'あり' : 'なし' %></td>
+ </tr>
+ <tr>
+  <th class='detail-item'>砂場</th>
+  <td class='detail-value'><%= @park.sandbox ? 'あり' : 'なし' %></td>
+ </tr>
+ <tr>
+  <th class='detail-item'>広場</th>
+  <td class='detail-value'><%= @park.grass ? 'あり' : 'なし' %></td>
+ </tr>
+ <tr>
+  <th class='detail-item'>キックバイク</th>
+  <td class='detail-value'><%= @park.kick_bike ? '可' : '不可' %></td>
+ </tr>
+ <tr>
+  <th class='detail-item'>売店・コンビニ</th>
+  <td class='detail-value'><%= @park.store ? 'あり' : 'なし' %></td>
+ </tr>
+ <tr>
+  <th class='detail-item'>飲食店</th>
+  <td class='detail-value'><%= @park.restaurant ? 'あり' : 'なし' %></td>
+ </tr>
+</table>
 
   <% if user_signed_in? %>
    <%= link_to "公園情報の編集", edit_park_path(@park.id), method: :get %>
@@ -82,7 +103,7 @@
    <%= f.submit "SEND" %>
  <% end %>
 <% else %>
-  <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+  <p>※※※ 写真・コメントの投稿には新規登録/ログインが必要です ※※※</p>
 <% end %>
 
 <%# <% if @comment.image.attached? %> 
