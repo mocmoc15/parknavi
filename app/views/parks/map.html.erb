@@ -4,17 +4,36 @@
    <div id="map" style="width:620px; height:400px"></div>
 
    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWdyAwrdg1iVdxc2iGfG6TxhRUPvgieeM&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=[APIkey]&callback=initMap">
    </script>
 
    <script>
-     var map;
+//    mapTypeControl:false//falseでマップ名及び航空写真（マップタイプ）の非表示
+// mapTypeControlOptions: {
+//     style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+//     position: google.maps.ControlPosition.BOTTOM_CENTER //マップタイプの位置
+// }
+     let map;
+     let marker;
+     let infoWindow;
      function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: new google.maps.LatLng(35.1239654, 136.9417741),
-            zoom: 15
-        });
-      }
+           center: new google.maps.LatLng(35.1239654, 136.9417741),
+           zoom: 15
+         });
+        marker = new google.maps.Marker({ // マーカーの追加
+           position: center, // マーカーを立てる位置を指定
+           map: map // マーカーを立てる地図を指定
+         });
+        infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+           content: '<div class="sample">TAM 大阪</div>' // 吹き出しに表示する内容
+         });
+        marker.addListener('click', function() { // マーカーをクリックしたとき
+           infoWindow.open(map, marker); // 吹き出しの表示
+         });
+}
+
+
       
     // InvalidValueError: initMap is not a functionの対応
      window.onload = function () {
