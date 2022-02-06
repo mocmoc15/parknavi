@@ -200,6 +200,11 @@ input[type="checkbox"] {
   left: 130px;
 }
 
+/* #map {
+  height: 400px;
+  width: 600px;
+} */
+
 .search-keyword {
   /* font-size: 20px; */
   text-align: center;

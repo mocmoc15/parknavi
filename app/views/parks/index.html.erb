@@ -10,6 +10,26 @@
   </div>
 </div>
 
+ 
+ここに地図表示
+    <div id="map" style="width:620px; height:400px"></div>
+
+    <script type="text/javascript">
+    function initMap() {
+      var opts = {
+        zoom: 15,
+        center: new google.maps.LatLng(35.1239654, 136.9417741)
+      };
+      var map = new google.maps.Map(document.getElementById("map"), opts);
+    }
+    </script>
+
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWdyAwrdg1iVdxc2iGfG6TxhRUPvgieeM&callback=initMap">
+    </script>
+
+
+
 <div class='main'>
 <p class='new-lists'>新着一覧</p>
 <ul class='park-lists'>
