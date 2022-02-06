@@ -10,30 +10,6 @@
   </div>
 </div>
 
- 
-ここに地図表示
-   <div id="map" style="width:620px; height:400px"></div>
-
-   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWdyAwrdg1iVdxc2iGfG6TxhRUPvgieeM&callback=initMap">
-   </script>
-
-   <script>
-     var map;
-     function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: new google.maps.LatLng(35.1239654, 136.9417741),
-            zoom: 15
-        });
-      }
-      
-    // InvalidValueError: initMap is not a functionの対応
-     window.onload = function () {
-         initMap();
-     }
-   </script>
-
-
 
 <div class='main'>
 <p class='new-lists'>新着一覧</p>
