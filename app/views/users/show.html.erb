@@ -1,13 +1,44 @@
 <%= render "shared/header" %>
 
-マイページ
-<%= @user.prefecture[:name] %>
-<%= link_to '編集', edit_user_path(current_user) %>
 
-<div class="XXXX">
-  <p><%= @user.nickname %>さんのお気に入りの公園一覧</p>
 
-  <% @parks.each do |park| %>
-      <span class="ZZZZ"><%= park.name %></span>
-  <% end %>
+<div class='user-details'>
+<table>
+ <tbody>
+ <tr>
+  <th class='user-name'>ニックネーム</th>
+  <td class='user-name-value'><%=@user.nickname %></td>
+ </tr>
+ <tr>
+  <th class='user-prefecture'>住んでいるところ</th>
+  <td class='user-prefecture-value'><%= @user.prefecture[:name] %></td>
+ </tr>
+ </tbody>
+</table>
 </div>
+
+<div class='edit-btn'>
+<%= link_to '居住地を変更する', edit_user_path(current_user), class: 'btn btn-secondary' %>
+</div>
+
+
+<div class='main'>
+  <p class='new-lists'><%= @user.nickname %>さんのお気に入りの公園一覧</p>
+  <ul class='park-lists'>
+    <% if @favorite_list.present? %>
+      <% @favorite_list.each do |park| %>
+        <li class='list'>
+          <%= link_to park_path(park.id), class:'list-all',method: :get do %>
+            <div class='list-name'>
+              <%= park.name %><br>
+            </div>
+            <div class='list-prefecture'>
+              <%= park.prefecture[:name] %><br> 
+            </div>
+          <% end %> 
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
