@@ -234,7 +234,8 @@ input[type="checkbox"] {
 
 
 .new-lists {
-  font-size: 80px;
+  font-size: 30px;
+  margin-left: 80px;
 }
 
 
@@ -336,7 +337,7 @@ input[type="checkbox"] {
   font-weight: bold;
 }
 
-table {
+.park-detail table {
   width: 50%;
   height: 80%;
   margin-left: 80px;
@@ -346,17 +347,71 @@ table {
 }
 
 
-th {
+.park-detail th {
   /* background-color: darksalmon; */
   width:  250px;              /* 幅指定 */
   font-weight:  normal;       /* 文字の太さ指定 */
 }
 
-td {
+.park-detail td {
   /* background-color: darkseagreen */
 }
 
 .post-btn-contents {
   display: flex;
   justify-content: center;
+}
+
+
+/* マイページ */
+.user-details{
+/* background-color: #57C3E9; */
+display: flex;          /* 子要素横並び */
+justify-content:center; /* 子要素水平方向に中央寄り */
+align-items: center;   /* 子要素垂直方向に中央寄り */
+
+}
+
+.user-details table {
+  width: 35%;
+  margin: 100px 20px 20px;
+  text-align: center;
+  font-size: large;
+  border: 1px #c9c9c2 solid;
+}
+
+
+.user-details th {
+  background-color: #ffe2c6;
+  width:  270px;              
+  font-weight:  normal; 
+  border: 1px #c9c9c2 solid;
+}
+
+.user-details td {
+  padding: 20px 10px;
+  border: 1px #c9c9c2 solid;
+}
+
+
+
+
+.edit-btn {
+  display: flex;
+  justify-content: center;
+  margin: 20px 20px 80px;
+}
+
+
+.btn {
+  width: 200px;
+  border-radius: 40px;
+  background-color: #57C3E9;
+  color: #fff;
+  border: 0;
+}
+
+
+.btn:hover {
+  background-color: #84d3ef;
 }

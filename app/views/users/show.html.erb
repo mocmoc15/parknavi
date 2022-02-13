@@ -2,8 +2,8 @@
 
 
 
-
-<table class='user-details'>
+<div class='user-details'>
+<table>
  <tbody>
  <tr>
   <th class='user-name'>ニックネーム</th>
@@ -11,11 +11,16 @@
  </tr>
  <tr>
   <th class='user-prefecture'>住んでいるところ</th>
-  <td class='user-prefecture-value'><%= @user.prefecture[:name] %><%= link_to '編集', edit_user_path(current_user), class:'edit-user' %></td>
+  <td class='user-prefecture-value'><%= @user.prefecture[:name] %></td>
  </tr>
  </tbody>
-
 </table>
+</div>
+
+<div class='edit-btn'>
+<%= link_to '居住地を変更する', edit_user_path(current_user), class: 'btn btn-secondary' %>
+</div>
+
 
 <div class='main'>
   <p class='new-lists'><%= @user.nickname %>さんのお気に入りの公園一覧</p>
